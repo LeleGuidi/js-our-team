@@ -85,6 +85,9 @@ addMemberButton.addEventListener(`click`,
             memberPrint(container, newMember)
             //Inserisco l'oggetto nell'array principale
             members.push(newMember)
+            setTimeout(() => {
+                alert("Nuovo membro del team inserito!")
+            }, 500);
         }
     }
 )
