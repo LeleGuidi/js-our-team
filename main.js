@@ -35,7 +35,7 @@ const members = [
     }
 ]
 
-
+//All'apertura della pagina i dati nell'array vengono inseriti nel DOM
 const container = document.querySelector(".team-container");
 for (let i = 0; i < members.length; i++) {
     let member = `
@@ -59,6 +59,7 @@ for (let i = 0; i < members.length; i++) {
 
 const addMemberButton = document.getElementById("addMemberButton")
 
+//Al click del bottone "aggiungi" verrà creata un nuova card con i dati inseriti dall'utente
 addMemberButton.addEventListener(`click`,
     function() {
         const name = document.getElementById("name")
