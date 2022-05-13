@@ -34,6 +34,8 @@ const members = [
         memberPicture: "img/barbara-ramos-graphic-designer.jpg"
     }
 ]
+
+
 const container = document.querySelector(".team-container");
 for (let i = 0; i < members.length; i++) {
     let member = `
@@ -52,3 +54,42 @@ for (let i = 0; i < members.length; i++) {
   `
     container.innerHTML += member;
 };
+
+
+
+const addMemberButton = document.getElementById("addMemberButton")
+
+addMemberButton.addEventListener(`click`,
+    function() {
+        const name = document.getElementById("name")
+        const role = document.getElementById("role")
+        const img = document.getElementById("image")
+        //Controllare che abbia inserito correttamente tutti i dati
+        if (name.value != "" && role.value != "" && img.value != "") {
+            members.push(
+                {
+                    memberName: name.value,
+                    memberDuty: role.value,
+                    memberPicture: img.value
+                }
+            )
+            console.log(members)
+        }
+        //Aggiungere i dati in una nuova card
+        let newMember = `
+        <div class="team-card">
+            <div class="card-image">
+                <img
+                    src="${members.pop().memberPicture}"
+                    alt="${members.pop().memberName}"
+                />
+            </div>
+            <div class="card-text">
+                <h3>${members.pop().memberName}</h3>
+                <p>${members.pop().memberDuty}</p>
+            </div>
+        </div>
+        `
+        container.innerHTML += newMember;
+    }
+)
