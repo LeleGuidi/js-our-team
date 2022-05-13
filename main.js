@@ -1,3 +1,6 @@
+/*--------------
+    MAIN
+--------------*/
 //Creo un array di oggetti per i dati dei membri
 const members = [
     {
@@ -13,7 +16,7 @@ const members = [
     {
         memberName: "Walter Gordon",
         memberDuty: "Office Manager",
-        memberPicture: "img/walter-gordon-office-manager"
+        memberPicture: "img/walter-gordon-office-manager.jpg"
     },
     {
         memberName: "Angela Lopez",
@@ -31,4 +34,21 @@ const members = [
         memberPicture: "img/barbara-ramos-graphic-designer.jpg"
     }
 ]
-console.log(members)
+const container = document.querySelector(".team-container");
+for (let i = 0; i < members.length; i++) {
+    let member = `
+    <div class="team-card">
+        <div class="card-image">
+            <img
+                src="${members[i].memberPicture}"
+                alt="${members[i].memberName}"
+            />
+        </div>
+        <div class="card-text">
+            <h3>${members[i].memberName}</h3>
+            <p>${members[i].memberDuty}</p>
+        </div>
+    </div>
+  `
+    container.innerHTML += member;
+};
