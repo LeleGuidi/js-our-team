@@ -2,23 +2,21 @@
     FUNCTION
 --------------*/
 function memberPrint (printLocation, arrayOrObject) {
-    for (let i = 0; i < arrayOrObject.length; i++) {
-        let member = `
-        <div class="team-card">
-            <div class="card-image">
-                <img
-                    src="${arrayOrObject[i].memberPicture}"
-                    alt="${arrayOrObject[i].memberName}"
-                />
-            </div>
-            <div class="card-text">
-                <h3>${arrayOrObject[i].memberName}</h3>
-                <p>${arrayOrObject[i].memberDuty}</p>
-            </div>
+    let member = `
+    <div class="team-card">
+        <div class="card-image">
+            <img
+                src="${arrayOrObject.memberPicture}"
+                alt="${arrayOrObject.memberName}"
+            />
         </div>
-        `
-        printLocation.innerHTML += member;
-    }   
+        <div class="card-text">
+            <h3>${arrayOrObject.memberName}</h3>
+            <p>${arrayOrObject.memberDuty}</p>
+        </div>
+    </div>
+    `
+    printLocation.innerHTML += member;
 }
 
 /*--------------
@@ -60,7 +58,10 @@ const members = [
 
 //All'apertura della pagina i dati nell'array vengono inseriti nel DOM
 const container = document.querySelector(".team-container");
-memberPrint(container, members)
+for (let i = 0; i < members.length; i++){
+    memberPrint(container, members[i])
+}
+
 
 
 
@@ -80,10 +81,8 @@ addMemberButton.addEventListener(`click`,
                     memberDuty: role.value,
                     memberPicture: img.value
                 }
-            //Inserisco l'oggetto creato in un nuovo array
-            const arrayMember = [newMember]
             //Utilizzo la funzione per stampare la nuova card 
-            memberPrint(container, arrayMember)
+            memberPrint(container, newMember)
             //Inserisco l'oggetto nell'array principale
             members.push(newMember)
         }
